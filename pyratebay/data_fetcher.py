@@ -2,19 +2,7 @@ import requests
 import json
 from urllib import parse
 from pyratebay.config import FAKE_HEADERS, API_URL, SEARCH_URL, INFO_URL, HOT_URL, MEDIA_TYP
-from dataclasses import dataclass
-
-@dataclass
-class Media:
-    mid      : str
-    title    : str
-    desc     : str | None = None
-    size     : int | None = None
-    seeders  : int | None = None
-    leechers : int | None = None
-    uploader : str | None = None
-    time     : int | None = None
-    info_hash: str | None = None
+from pyratebay.models import Media
 
 def media_search(query: str, media_type: str) -> list:
     media_list: list[Media] = []

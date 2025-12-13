@@ -1,4 +1,5 @@
-from pyratebay.data_fetcher import Media, media_search, media_info, hot_media
+from pyratebay.data_fetcher import media_search, media_info, hot_media
+from pyratebay.models import Media
 
 def search_command(args) -> list[Media]:
     return media_search(args.query, args.type)
