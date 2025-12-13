@@ -1,11 +1,11 @@
-def search_command(args) -> None:
-    pass
+from pyratebay.data_fetcher import Media, media_search, media_info
 
-def info_command(args) -> None:
-    pass
+def search_command(args) -> list[Media]:
+    return media_search(args.query, args.type)
 
-def get_command(args) -> None:
-    pass
+def info_command(args) -> Media:
+    return media_info(args.tid)
 
-def hot_command() -> None:
+
+def hot_command() -> list[Media]:
     pass

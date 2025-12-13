@@ -1,5 +1,5 @@
 import argparse
-from pyratebay.main import search_command, info_command, get_command, hot_command
+from pyratebay.main import search_command, info_command, hot_command
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="pyratebay, a simple command line tool for the pirate bay.")
@@ -12,18 +12,17 @@ def main() -> None:
     parser_search.set_defaults(func=search_command)
 
     args = parser.parse_args()
-
-    args.func(args)
+    result = args.func(args)
+    print(result)
 
     # info
     parser_info = subparsers.add_parser("info", help="Get torrent information by torrent id")
     parser_info.add_argument("tid", type=int, help="torrent id")
     parser_info.set_defaults(func=info_command)
 
-    # get
-    parser_get = subparsers.add_parser("get", help="Download torrent")
-    parser_get.add_argument("tid", type=int, help="torrent id")
-    parser_get.set_defaults(func=get_command)
+    args = parser.parse_args()
+    result = args.func(args)
+    print(result)
 
     # hot
     parser_hot = subparsers.add_parser("hot", help="Get hot torrents")
