@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 from urllib import parse
 from pyratebay.config import FAKE_HEADERS, API_URL, SEARCH_URL, INFO_URL, HOT_URL, MEDIA_TYP
 from pyratebay.models import Media
@@ -10,8 +11,13 @@ def media_search(query: str, media_type: str) -> list:
     typ: str = MEDIA_TYP.get(media_type) if media_type in MEDIA_TYP else "0"
     url: str = API_URL + SEARCH_URL.format(query=search_key, typ=typ)
 
-    response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
-    data: list = json.loads(response.text)
+    try:
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: list = json.loads(response.text)
+    except Exception:
+        time.sleep(3)
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: list = json.loads(response.text)
 
     for x in data:
         media = Media(
@@ -30,8 +36,15 @@ def media_search(query: str, media_type: str) -> list:
 
 def media_info(mid: str) -> Media:
     url: str = API_URL + INFO_URL.format(tid=mid)
-    response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
-    data: dict = json.loads(response.text)
+
+    try:
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: dict = json.loads(response.text)
+    except Exception:
+        time.sleep(3)
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: dict = json.loads(response.text)
+
     media = Media(
         mid       = data["id"],
         title     = data["name"],
@@ -52,8 +65,13 @@ def hot_media(media_type: str, limit: bool) -> list:
     typ: str = MEDIA_TYP.get(media_type) if media_type in MEDIA_TYP else "0"
     url:str = API_URL + HOT_URL.format(typ=typ, recent=recent)
 
-    response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
-    data: list = json.loads(response.text)
+    try:
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: list = json.loads(response.text)
+    except Exception:
+        time.sleep(3)
+        response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+        data: list = json.loads(response.text)
 
     for x in data:
         media = Media(
