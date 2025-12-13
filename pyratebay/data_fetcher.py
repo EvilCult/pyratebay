@@ -23,11 +23,11 @@ def media_search(query: str, media_type: str) -> list:
         media = Media(
             mid       = x["id"],
             title     = x["name"],
-            size      = x["size"] if "size" in x else None,
-            seeders   = x["seeders"] if "seeders" in x else None,
-            leechers  = x["leechers"] if "leechers" in x else None,
+            size      = int(x["size"]) if "size" in x else None,
+            seeders   = int(x["seeders"]) if "seeders" in x else None,
+            leechers  = int(x["leechers"]) if "leechers" in x else None,
             uploader  = x["username"] if "username" in x else None,
-            time      = x["added"] if "added" in x else None,
+            time      = int(x["added"]) if "added" in x else None,
             info_hash = x["info_hash"] if "info_hash" in x else None,
         )
         media_list.append(media)

@@ -31,6 +31,16 @@ def format_media_info(media: Media) -> str:
 
     """).strip() + "\n------\n" + media.desc + "\n------\n"
 
+def format_hot_list(media_list: list[Media]) -> str:
+    def list_info(media: Media) -> str:
+        return textwrap.dedent(f"""
+            [{media.mid}]
+            {media.title} - ({fmt_size(media.size)})
+            Time: {fmt_time(media.time)}
+        """).strip() + "\n"
+    
+    return "\n".join([list_info(media) for media in media_list])
+
 def fmt_time(ts: int) -> str:
     return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
