@@ -1,7 +1,7 @@
 import requests
 import json
 from urllib import parse
-from pyratebay.config import FAKE_HEADERS, API_URL, SEARCH_URL, INFO_URL, MEDIA_TYP
+from pyratebay.config import FAKE_HEADERS, API_URL, SEARCH_URL, INFO_URL, HOT_URL, MEDIA_TYP
 from dataclasses import dataclass
 
 @dataclass
@@ -56,3 +56,28 @@ def media_info(mid: str) -> Media:
         info_hash = data["info_hash"] if "info_hash" in data else None,
     )
     return media
+
+def hot_media(media_type: str, limit: bool) -> list:
+    media_list: list[Media] = []
+
+    recent = "_48h" if limit else ""
+    typ: str = MEDIA_TYP.get(media_type) if media_type in MEDIA_TYP else "0"
+    url:str = API_URL + HOT_URL.format(typ=typ, recent=recent)
+
+    response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+    data: list = json.loads(response.text)
+
+    for x in data:
+        media = Media(
+            mid       = x["id"],
+            title     = x["name"],
+            size      = x["size"] if "size" in x else None,
+            seeders   = x["seeders"] if "seeders" in x else None,
+            leechers  = x["leechers"] if "leechers" in x else None,
+            uploader  = x["username"] if "username" in x else None,
+            time      = x["added"] if "added" in x else None,
+            info_hash = x["info_hash"] if "info_hash" in x else None,
+        )
+        media_list.append(media)
+
+    return media_list

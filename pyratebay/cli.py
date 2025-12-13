@@ -18,6 +18,8 @@ def main() -> None:
 
     # hot
     parser_hot = subparsers.add_parser("hot", help="Get hot torrents")
+    parser_hot.add_argument("-t", "--type", type=str, default="movie", help="Type of content. e.g. movie, tv, music, etc.")
+    parser_hot.add_argument("-l", "--limit", type=bool, default=False, help="Only show the hot resources within 48h") 
     parser_hot.set_defaults(func=hot_command)
 
     args = parser.parse_args()

@@ -1,6 +1,7 @@
 API_URL    = "https://apibay.org"
 SEARCH_URL = "/q.php?q={query}&cat={typ}"
 INFO_URL   = "/t.php?id={tid}"
+HOT_URL    = "/precompiled/data_top100{recent}_{typ}.json"
 
 MEDIA_TYP = {
     "all"  : "0",
