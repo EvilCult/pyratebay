@@ -41,4 +41,18 @@ def media_search(query: str, media_type: str) -> list:
     return media_list
 
 def media_info(mid: str) -> Media:
-    pass
+    url: str = API_URL + INFO_URL.format(tid=mid)
+    response: requests.Response = requests.get(url, headers=FAKE_HEADERS)
+    data: dict = json.loads(response.text)
+    media = Media(
+        mid       = data["id"],
+        title     = data["name"],
+        desc      = data["descr"] if "size" in data else None,
+        size      = data["size"] if "size" in data else None,
+        seeders   = data["seeders"] if "seeders" in data else None,
+        leechers  = data["leechers"] if "leechers" in data else None,
+        uploader  = data["username"] if "username" in data else None,
+        time      = data["added"] if "added" in data else None,
+        info_hash = data["info_hash"] if "info_hash" in data else None,
+    )
+    return media

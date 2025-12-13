@@ -11,22 +11,18 @@ def main() -> None:
     parser_search.add_argument("-t", "--type", type=str, default="all", help="Type of content. e.g. movie, tv, music, etc.")
     parser_search.set_defaults(func=search_command)
 
-    args = parser.parse_args()
-    result = args.func(args)
-    print(result)
-
     # info
     parser_info = subparsers.add_parser("info", help="Get torrent information by torrent id")
     parser_info.add_argument("tid", type=int, help="torrent id")
     parser_info.set_defaults(func=info_command)
 
-    args = parser.parse_args()
-    result = args.func(args)
-    print(result)
-
     # hot
     parser_hot = subparsers.add_parser("hot", help="Get hot torrents")
     parser_hot.set_defaults(func=hot_command)
+
+    args = parser.parse_args()
+    result = args.func(args)
+    print(result)
 
 if __name__ == "__main__":
     main()

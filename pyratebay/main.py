@@ -6,6 +6,5 @@ def search_command(args) -> list[Media]:
 def info_command(args) -> Media:
     return media_info(args.tid)
 
-
 def hot_command() -> list[Media]:
     pass

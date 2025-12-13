@@ -1,6 +1,6 @@
 API_URL    = "https://apibay.org"
 SEARCH_URL = "/q.php?q={query}&cat={typ}"
-INFO_URL   = "/description.php?id={tid}"
+INFO_URL   = "/t.php?id={tid}"
 
 MEDIA_TYP = {
     "all"  : "0",
