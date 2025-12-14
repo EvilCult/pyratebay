@@ -9,6 +9,8 @@ MEDIA_TYP = {
     "movie": "207",
     "tv"   : "208",
     "music": "101",
+    "game" : "400",
+    "app"  : "300",
 }
 
 FAKE_HEADERS = {

@@ -1,7 +1,7 @@
 [project]
 requires-python = ">=3.12"
 name = "pyratebay"
-version = "0.1.0"
+version = "0.2.0"
 description = "A simple command line tool for the pirate bay."
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -19,7 +19,6 @@ classifiers = [
 ]
 
 dependencies = [
-    "bs4>=0.0.2",
     "requests>=2.32.5",
 ]
 

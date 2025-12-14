@@ -7,7 +7,7 @@ from pyratebay.config import HASH_URL, TR_LIST
 def format_media_list(media_list: list[Media]) -> str:
     def list_info(media: Media) -> str:
         return textwrap.dedent(f"""
-            [{media.mid}]
+            [ {media.mid} ]
             {media.title}
             Size: {fmt_size(media.size)}
             Seeders: {media.seeders}
@@ -16,7 +16,7 @@ def format_media_list(media_list: list[Media]) -> str:
             Time: {fmt_time(media.time)}
         """).strip() + "\n"
     
-    return "\n".join([list_info(media) for media in media_list])
+    return "\n".join([list_info(media) for media in reversed(media_list)])
 
 def format_media_info(media: Media) -> str:
     return textwrap.dedent(f"""
@@ -34,12 +34,12 @@ def format_media_info(media: Media) -> str:
 def format_hot_list(media_list: list[Media]) -> str:
     def list_info(media: Media) -> str:
         return textwrap.dedent(f"""
-            [{media.mid}]
+            [ {media.mid} ]
             {media.title} - ({fmt_size(media.size)})
             Time: {fmt_time(media.time)}
         """).strip() + "\n"
     
-    return "\n".join([list_info(media) for media in media_list])
+    return "\n".join([list_info(media) for media in reversed(media_list)])
 
 def fmt_time(ts: int) -> str:
     return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')

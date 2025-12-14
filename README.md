@@ -4,17 +4,19 @@ Python tools for The Pirate Bay. A simple command line interface and Python API.
 
 ## Installation
 
-### From Source
+### From PyPI
+
+```bash
+pip install pyratebay
+```
+
+### For Developers
 
 ```bash
 git clone https://github.com/evilcult/pyratebay
 cd pyratebay
-pip install .
-```
-
-### For Development
-
-```bash
+pip install . 
+# or for development    
 pip install -e .
 ```
 
