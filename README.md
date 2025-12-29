@@ -1,5 +1,18 @@
 # pyratebay
 
+[![PyPI Version](https://img.shields.io/pypi/v/pyratebay.svg)](https://pypi.org/project/pyratebay/)
+![Downloads](https://static.pepy.tech/badge/pyratebay?x=42)
+
+
+![Platform](https://img.shields.io/badge/platform-CLI-lightgrey)
+![uv](https://img.shields.io/badge/built%20with-uv-5f43e9)
+![ruff](https://img.shields.io/badge/lint-ruff-red)
+[![License](https://img.shields.io/github/license/evilcult/pyratebay.svg)](LICENSE)
+
+
+[![GitHub stars](https://img.shields.io/github/stars/evilcult/pyratebay.svg?style=social&label=Stars)](https://github.com/evilcult/pyratebay/stargazers)
+
+
 Python tools for The Pirate Bay. A simple command line interface and Python API.
 
 ## Installation
