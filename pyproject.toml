@@ -27,3 +27,7 @@ pyratebay = "pyratebay.cli:main"
 Homepage = "https://github.com/evilcult/pyratebay"
 Source = "https://github.com/evilcult/pyratebay"
 Issues = "https://github.com/evilcult/pyratebay/issues"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
